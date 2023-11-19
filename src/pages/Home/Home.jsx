@@ -2,7 +2,8 @@ import useUsers from "../../hooks/useUsers";
 import UserCard from "./UserCard";
 
 const Home = () => {
-  const [users, , isLoading, page, setPage, limit] = useUsers();
+  const [users, refetch, isLoading, page, setPage, limit, setGender] =
+    useUsers();
   return (
     <div className="mx-4 md:mx-10 lg:mx-14 2xl:mx-20">
       {/* header */}
@@ -53,7 +54,16 @@ const Home = () => {
                 </div>
                 <div className="flex items-center justify-center gap-2">
                   <span className="text-md">Gender</span>
-                  <select className=" px-3 py-3 bg-[#000000a4] rounded-sm focus:outline-none">
+                  <select
+                    className=" px-3 py-3 bg-[#000000a4] rounded-sm focus:outline-none"
+                    onChange={(e) => {
+                      setGender(e.target.value);
+                    //   refetch();
+                    //   if(isLoading){
+                    //     <h2>Loading...</h2>
+                    //   }
+                    }}
+                  >
                     <option disabled selected>
                       default
                     </option>
