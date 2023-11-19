@@ -1,17 +1,33 @@
+import { Link } from "react-router-dom";
 import useUsers from "../../hooks/useUsers";
 import UserCard from "./UserCard";
 
 const Home = () => {
-  const [users, refetch, isLoading, page, setPage, limit, setGender] =
-    useUsers();
+  const [
+    users,
+    refetch,
+    isLoading,
+    page,
+    setPage,
+    limit,
+    setGender,
+    setDomain,
+    setAvailability,
+  ] = useUsers();
   return (
     <div className="mx-4 md:mx-10 lg:mx-14 2xl:mx-20">
       {/* header */}
-      <div>
-        <ul>
-          <li>Homepage</li>
+      <div className="flex items-center justify-center pt-8">
+        <ul className="flex gap-4 font-medium text-[18px] uppercase">
+          <Link to="/">
+            <li className="hover:text-[#EE9322] duration-300">Home</li>
+          </Link>
+          <Link to="/team">
+            <li className="hover:text-[#EE9322] duration-300">Team</li>
+          </Link>
         </ul>
       </div>
+      <div className="divider divider-neutral"></div>
 
       {/* body */}
       <div>
@@ -58,10 +74,10 @@ const Home = () => {
                     className=" px-3 py-3 bg-[#000000a4] rounded-sm focus:outline-none"
                     onChange={(e) => {
                       setGender(e.target.value);
-                    //   refetch();
-                    //   if(isLoading){
-                    //     <h2>Loading...</h2>
-                    //   }
+                      //   refetch();
+                      //   if(isLoading){
+                      //     <h2>Loading...</h2>
+                      //   }
                     }}
                   >
                     <option disabled selected>
@@ -75,7 +91,12 @@ const Home = () => {
                 </div>
                 <div className="flex items-center justify-center gap-2">
                   <span className="text-md">Domain</span>
-                  <select className=" px-3 py-3 bg-[#000000a4] rounded-sm focus:outline-none">
+                  <select
+                    className=" px-3 py-3 bg-[#000000a4] rounded-sm focus:outline-none"
+                    onChange={(e) => {
+                      setDomain(e.target?.value);
+                    }}
+                  >
                     <option disabled selected>
                       default
                     </option>
@@ -89,7 +110,12 @@ const Home = () => {
                 </div>
                 <div className="flex items-center justify-center gap-2">
                   <span className="text-md">Availability</span>
-                  <select className=" px-3 py-3 bg-[#000000a4] rounded-sm focus:outline-none">
+                  <select
+                    className=" px-3 py-3 bg-[#000000a4] rounded-sm focus:outline-none"
+                    onChange={(e) => {
+                      setAvailability(e.target?.value);
+                    }}
+                  >
                     <option disabled selected>
                       default
                     </option>
