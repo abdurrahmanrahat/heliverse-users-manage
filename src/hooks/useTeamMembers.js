@@ -9,7 +9,7 @@ const useTeamMembers = () => {
   } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await axios("http://localhost:5000/teamMembers");
+      const res = await axios("https://heliverse-users-manage-server.up.railway.app/teamMembers");
       return res.data;
     },
   });

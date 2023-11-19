@@ -40,7 +40,7 @@ const UserCard = ({ user }) => {
     }
 
     // send cart product to db
-    fetch("http://localhost:5000/teamMembers", {
+    fetch("https://heliverse-users-manage-server.up.railway.app/teamMembers", {
       method: "POST",
       headers: {
         "content-type": "application/json",

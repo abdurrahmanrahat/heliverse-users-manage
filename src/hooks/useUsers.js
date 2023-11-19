@@ -16,12 +16,12 @@ const useUsers = () => {
   }
 
   // const fetchUsers = async () => {
-  //   const res = await axios.get(`http://localhost:5000/users?limit=${limit}&page=${page}&gender=${gender}&domain=${domain}&availability=${availability}`);
+  //   const res = await axios.get(`https://heliverse-users-manage-server.up.railway.app/users?limit=${limit}&page=${page}&gender=${gender}&domain=${domain}&availability=${availability}`);
   //   return res.data;
   // };
 
   const { data: users, refetch, isLoading } = useQuery(["users", limit, page], async () => {
-    const res = await axios.get(`http://localhost:5000/users?limit=${limit}&page=${page}&gender=${gender}&domain=${domain}&availability=${availability}&search=${search}`);
+    const res = await axios.get(`https://heliverse-users-manage-server.up.railway.app/users?limit=${limit}&page=${page}&gender=${gender}&domain=${domain}&availability=${availability}&search=${search}`);
     return res.data;
   });
 

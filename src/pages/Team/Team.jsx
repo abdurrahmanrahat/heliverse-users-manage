@@ -7,7 +7,7 @@ const Team = () => {
 
   // handle delete user function
   const handleDeleteMember = (member) => {
-    fetch(`http://localhost:5000/teamMembers/${member._id}`, {
+    fetch(`https://heliverse-users-manage-server.up.railway.app/teamMembers/${member._id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -39,7 +39,7 @@ const Team = () => {
         <h2 className="text-[32px] text-center font-medium">
           Welcome to your personal team
         </h2>
-        <p className="mx-6 md:mx-24 text-center">
+        <p className="mx-6 md:mx-24 text-center text-[14px] md:text-[15px] mt-6">
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente
           dolorem ab voluptas harum, soluta, consequuntur quam molestias, quo
           accusantium illum fuga maxime. Maxime eius deleniti dolorum, eaque
