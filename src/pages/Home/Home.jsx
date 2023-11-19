@@ -5,6 +5,7 @@ import UserCard from "./UserCard";
 const Home = () => {
   const [
     users,
+    ,
     isLoading,
     page,
     setPage,
@@ -12,6 +13,8 @@ const Home = () => {
     setGender,
     setDomain,
     setAvailability,
+    searchRef,
+    handleSearch,
   ] = useUsers();
   return (
     <div className="mx-4 md:mx-10 lg:mx-14 2xl:mx-20">
@@ -46,11 +49,11 @@ const Home = () => {
                 <div className="input-group pl-14 md:pl-0 pb-4 md:pb-0">
                   <input
                     type="text"
-                    placeholder="Search…"
-                    // ref={searchRef}
+                    placeholder="Search by FirstName..."
+                    ref={searchRef}
                     className="input input-bordered rounded-md bg-black"
                   />
-                  <button className="btn btn-square border-none bg-black">
+                  <button onClick={handleSearch} className="btn btn-square border-none bg-black">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-6 w-6 "
