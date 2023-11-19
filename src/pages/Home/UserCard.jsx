@@ -1,6 +1,9 @@
 import toast from "react-hot-toast";
+import useTeamMembers from "../../hooks/useTeamMembers";
 
 const UserCard = ({ user }) => {
+  const [teamMembers] = useTeamMembers();
+
   const {
     _id,
     first_name,
@@ -23,6 +26,18 @@ const UserCard = ({ user }) => {
       available,
       beforeId: _id,
     };
+
+    const matchedDomain = teamMembers.find(
+      (member) => member.domain === user.domain
+    );
+    if (matchedDomain) {
+      toast.error(`${matchedDomain.domain} type domain already have`);
+      return;
+    }
+    if (!available) {
+      toast.error("Member is not available");
+      return;
+    }
 
     // send cart product to db
     fetch("http://localhost:5000/teamMembers", {
