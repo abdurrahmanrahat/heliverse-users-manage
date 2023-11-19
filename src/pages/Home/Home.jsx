@@ -5,7 +5,6 @@ import UserCard from "./UserCard";
 const Home = () => {
   const [
     users,
-    refetch,
     isLoading,
     page,
     setPage,
