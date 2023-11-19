@@ -1,23 +1,24 @@
 import { useQuery } from "react-query";
 import axios from "axios";
+import { useState, useEffect } from "react";
 
 const useUsers = () => {
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(20);
 
-  const {
-    data: users,
-    refetch,
-    isLoading,
-  } = useQuery({
-    queryKey: ["user"],
-    queryFn: async () => {
-      const res = await axios(
-        "http://localhost:5000/users"
-      );
-      return res.data;
-    },
-  });
+  const fetchUsers = async () => {
+    const res = await axios.get(`http://localhost:5000/users?limit=${limit}&page=${page}`);
+    return res.data;
+  };
 
-  return [users, refetch, isLoading];
+  const { data: users, refetch, isLoading } = useQuery(["users", limit, page], fetchUsers);
+
+  // Update the query key when limit or page changes
+  useEffect(() => {
+    refetch();
+  }, [limit, page, refetch]);
+
+  return [users, refetch, isLoading, page, setPage, limit, setLimit];
 };
 
 export default useUsers;
